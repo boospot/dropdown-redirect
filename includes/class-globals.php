@@ -27,7 +27,7 @@ class Globals {
 	 * @var
 	 */
 	protected static $options = array();
-	protected static $prefix = 'dropdown_redirect_';
+	protected static $prefix = 'ddr_';
 	/**
 	 * The ID of this plugin.
 	 *
@@ -128,7 +128,7 @@ class Globals {
 
 		$default_options = array();
 
-		$default_options = apply_filters( 'dropdown_redirect_admin_settings_default', $default_options );
+		$default_options = apply_filters( 'ddr_admin_settings_default', $default_options );
 
 		return $default_options;
 	}
@@ -136,7 +136,7 @@ class Globals {
 
 	/** @noinspection PhpUnused */
 	public static function get_meta_prefix() {
-		return apply_filters( 'dropdown_redirect_global_meta_prefix', static::$prefix );
+		return apply_filters( 'ddr_global_meta_prefix', static::$prefix );
 	}
 
 

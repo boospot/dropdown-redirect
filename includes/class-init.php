@@ -78,7 +78,7 @@ class Init {
 		if ( defined( 'DROPDOWN_REDIRECT_PLUGIN_NAME' ) ) {
 			$this->plugin_name = DROPDOWN_REDIRECT_PLUGIN_NAME;
 		} else {
-			$this->plugin_name = 'dropdown_redirect';
+			$this->plugin_name = 'ddr';
 		}
 
 
@@ -86,9 +86,10 @@ class Init {
 		$this->set_locale();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
+		$this->define_shortcode_hooks();
 		$this->define_taxonomy_hooks();
 
-		do_action( 'dropdown_redirect_init_construct' );
+		do_action( 'ddr_init_construct' );
 
 	}
 
@@ -149,8 +150,8 @@ class Init {
 
 		$plugin_admin = new Admin( $this->get_plugin_name(), $this->get_version() );
 
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+//		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
+//		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 
 
 	}
@@ -191,8 +192,20 @@ class Init {
 
 		$plugin_public = new Front( $this->get_plugin_name(), $this->get_version() );
 
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+//		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
+//		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+
+	}
+
+	/**
+	 * Register all of the hooks related to Shortcode
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 */
+	private function define_shortcode_hooks() {
+
+		$plugin_shortcode = new Shortcode( $this->get_plugin_name(), $this->get_version() );
 
 	}
 

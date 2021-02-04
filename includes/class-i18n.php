@@ -36,7 +36,7 @@ class i18N {
 	public function load_plugin_textdomain() {
 
 		load_plugin_textdomain(
-			'dropdown_redirect',
+			'dropdown-redirect',
 			false,
 			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
 		);

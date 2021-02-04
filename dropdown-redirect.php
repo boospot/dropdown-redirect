@@ -14,7 +14,7 @@
  * @package           DropdownRedirect
  *
  * @wordpress-plugin
- * Plugin Name:       DropdownRedirect
+ * Plugin Name:       Dropdown Redirect
  * Plugin URI:        https://boospot.com/
  * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
  * Requires PHP:      7.0
@@ -25,7 +25,7 @@
  * Author URI:        https://booskills.com/rao
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain:       dropdown_redirect
+ * Text Domain:       dropdown-redirect
  * Domain Path:       /languages
  */
 
@@ -41,7 +41,7 @@ if ( ! defined( 'WPINC' ) ) {
  */
 define( 'DROPDOWN_REDIRECT_VERSION', '1.0.0' );
 
-define( 'DROPDOWN_REDIRECT_PLUGIN_NAME', 'dropdown_redirect' );
+define( 'DROPDOWN_REDIRECT_PLUGIN_NAME', 'ddr' );
 
 /**
  * Plugin base name.
@@ -50,7 +50,6 @@ define( 'DROPDOWN_REDIRECT_PLUGIN_NAME', 'dropdown_redirect' );
  */
 /** @noinspection PhpUnused */
 define( 'DROPDOWN_REDIRECT_PLUGIN_BASE_NAME', basename( __FILE__ ) );
-
 
 
 /**
