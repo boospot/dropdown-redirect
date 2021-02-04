@@ -7,15 +7,15 @@ namespace Composer\Autoload;
 class ComposerStaticInitf953438782c78e200b21ad2e083164a7
 {
     public static $classMap = array (
-        'Skeleton\\Activator' => __DIR__ . '/../..' . '/includes/class-activator.php',
-        'Skeleton\\Admin' => __DIR__ . '/../..' . '/admin/class-admin.php',
-        'Skeleton\\Deactivator' => __DIR__ . '/../..' . '/includes/class-deactivator.php',
-        'Skeleton\\Front' => __DIR__ . '/../..' . '/public/class-front.php',
-        'Skeleton\\Globals' => __DIR__ . '/../..' . '/includes/class-globals.php',
-        'Skeleton\\Init' => __DIR__ . '/../..' . '/includes/class-init.php',
-        'Skeleton\\Loader' => __DIR__ . '/../..' . '/includes/class-loader.php',
-        'Skeleton\\Taxonomy' => __DIR__ . '/../..' . '/includes/class-taxonomy.php',
-        'Skeleton\\i18N' => __DIR__ . '/../..' . '/includes/class-i18n.php',
+        'DropdownRedirect\\Activator' => __DIR__ . '/../..' . '/includes/class-activator.php',
+        'DropdownRedirect\\Admin' => __DIR__ . '/../..' . '/admin/class-admin.php',
+        'DropdownRedirect\\Deactivator' => __DIR__ . '/../..' . '/includes/class-deactivator.php',
+        'DropdownRedirect\\Front' => __DIR__ . '/../..' . '/public/class-front.php',
+        'DropdownRedirect\\Globals' => __DIR__ . '/../..' . '/includes/class-globals.php',
+        'DropdownRedirect\\Init' => __DIR__ . '/../..' . '/includes/class-init.php',
+        'DropdownRedirect\\Loader' => __DIR__ . '/../..' . '/includes/class-loader.php',
+        'DropdownRedirect\\Taxonomy' => __DIR__ . '/../..' . '/includes/class-taxonomy.php',
+        'DropdownRedirect\\i18N' => __DIR__ . '/../..' . '/includes/class-i18n.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

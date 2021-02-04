@@ -11,10 +11,10 @@
  *
  * @link              https://booskills.com/rao
  * @since             1.0.0
- * @package           Skeleton
+ * @package           DropdownRedirect
  *
  * @wordpress-plugin
- * Plugin Name:       Skeleton
+ * Plugin Name:       DropdownRedirect
  * Plugin URI:        https://boospot.com/
  * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
  * Requires PHP:      7.0
@@ -25,7 +25,7 @@
  * Author URI:        https://booskills.com/rao
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain:       skeleton
+ * Text Domain:       dropdown_redirect
  * Domain Path:       /languages
  */
 
@@ -39,9 +39,9 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'SKELETON_VERSION', '1.0.0' );
+define( 'DROPDOWN_REDIRECT_VERSION', '1.0.0' );
 
-define( 'SKELETON_PLUGIN_NAME', 'skeleton' );
+define( 'DROPDOWN_REDIRECT_PLUGIN_NAME', 'dropdown_redirect' );
 
 /**
  * Plugin base name.
@@ -49,7 +49,7 @@ define( 'SKELETON_PLUGIN_NAME', 'skeleton' );
  * Start at version 1.0.0
  */
 /** @noinspection PhpUnused */
-define( 'SKELETON_PLUGIN_BASE_NAME', basename( __FILE__ ) );
+define( 'DROPDOWN_REDIRECT_PLUGIN_BASE_NAME', basename( __FILE__ ) );
 
 
 
@@ -59,7 +59,7 @@ define( 'SKELETON_PLUGIN_BASE_NAME', basename( __FILE__ ) );
  * Start at version 1.0.0
  */
 /** @noinspection PhpUnused */
-define( 'SKELETON_DIR_PATH', plugin_dir_path( __FILE__ ) );
+define( 'DROPDOWN_REDIRECT_DIR_PATH', plugin_dir_path( __FILE__ ) );
 
 /**
  * Plugin url to access its resources through browser
@@ -67,7 +67,7 @@ define( 'SKELETON_DIR_PATH', plugin_dir_path( __FILE__ ) );
  * Start at version 1.0.0
  */
 /** @noinspection PhpUnused */
-define( 'SKELETON_URL_PATH', plugin_dir_url( __FILE__ ) );
+define( 'DROPDOWN_REDIRECT_URL_PATH', plugin_dir_url( __FILE__ ) );
 
 /**
  * Composer Auto Loader
@@ -76,22 +76,22 @@ require 'vendor/autoload.php';
 
 /**
  * The code that runs during plugin activation.
- * This action is documented in includes/class-skeleton-activator.php
+ * This action is documented in includes/class-dropdown_redirect-activator.php
  */
-function skeleton_activate() {
-	Skeleton\Activator::activate();
+function dropdown_redirect_activate() {
+	DropdownRedirect\Activator::activate();
 }
 
 /**
  * The code that runs during plugin deactivation.
- * This action is documented in includes/class-skeleton-deactivator.php
+ * This action is documented in includes/class-dropdown_redirect-deactivator.php
  */
-function skeleton_deactivate() {
-	Skeleton\Deactivator::deactivate();
+function dropdown_redirect_deactivate() {
+	DropdownRedirect\Deactivator::deactivate();
 }
 
-register_activation_hook( __FILE__, 'skeleton_activate' );
-register_deactivation_hook( __FILE__, 'skeleton_deactivate' );
+register_activation_hook( __FILE__, 'dropdown_redirect_activate' );
+register_deactivation_hook( __FILE__, 'dropdown_redirect_deactivate' );
 /**
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
@@ -106,11 +106,11 @@ register_deactivation_hook( __FILE__, 'skeleton_deactivate' );
  *
  * @since    1.0.0
  */
-function run_skeleton() {
+function run_dropdown_redirect() {
 
-	$plugin = new Skeleton\Init();
+	$plugin = new DropdownRedirect\Init();
 	$plugin->run();
 
 }
 
-run_skeleton();
+run_dropdown_redirect();

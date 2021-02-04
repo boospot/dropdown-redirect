@@ -1,6 +1,6 @@
 {
-  "name": "boospot/skeleton",
-  "description": "Skeleton for WordPress Plugin Boilerplate with Namespace",
+  "name": "boospot/dropdown-redirect",
+  "description": "Dropdown Redirect plugin for WordPRess",
   "type": "wordpress-plugin",
   "license": "GPL2",
   "authors": [
