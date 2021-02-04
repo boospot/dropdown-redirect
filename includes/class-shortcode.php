@@ -133,15 +133,9 @@ class Shortcode {
 		$output .= do_shortcode( $content );
 		$output .= '  </select></span></div>';
 
-		$output .= "<script>(function($){
-					$('#ddr-instance-" . $this->counter . " .ddr-select-cont select.ddr-select').change(function(){
-						var getValue = $(this).val();
-				    if(getValue !== ''){
-				      window.open(getValue, '" . $atts['target'] . "');      }
-					});
-				}(jQuery));</script>";
+		$output .= "<script>(function($){ $('#ddr-instance-" . $this->counter . " .ddr-select-cont select.ddr-select').change(function(){ var getValue = $(this).val(); if(getValue !== ''){ window.open(getValue, '" . $atts['target'] . "');}});}(jQuery));</script>";
 
-		// Increase the counter for next shortcode
+		// Increase the counter for next shortcode instance
 		$this->counter ++;
 
 		// return output
