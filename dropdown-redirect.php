@@ -41,7 +41,7 @@ if ( ! defined( 'WPINC' ) ) {
  */
 define( 'DROPDOWN_REDIRECT_VERSION', '1.0.0' );
 
-define( 'DROPDOWN_REDIRECT_PLUGIN_NAME', 'ddr' );
+define( 'DROPDOWN_REDIRECT_PLUGIN_NAME', 'dropdown-redirect' );
 
 /**
  * Plugin base name.

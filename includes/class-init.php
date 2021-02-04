@@ -78,7 +78,7 @@ class Init {
 		if ( defined( 'DROPDOWN_REDIRECT_PLUGIN_NAME' ) ) {
 			$this->plugin_name = DROPDOWN_REDIRECT_PLUGIN_NAME;
 		} else {
-			$this->plugin_name = 'ddr';
+			$this->plugin_name = 'dropdown-redirect';
 		}
 
 

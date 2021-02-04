@@ -1,6 +1,6 @@
 {
   "name": "boospot/dropdown-redirect",
-  "description": "Dropdown Redirect plugin for WordPRess",
+  "description": "Dropdown Redirect plugin for WordPress",
   "type": "wordpress-plugin",
   "license": "GPL2",
   "authors": [
