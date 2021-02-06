@@ -105,11 +105,14 @@ register_deactivation_hook( __FILE__, 'dropdown_redirect_deactivate' );
  *
  * @since    1.0.0
  */
-function run_dropdown_redirect() {
+function dropdown_redirect() {
 
-	$plugin = new DropdownRedirect\Init();
-	$plugin->run();
+	return DropdownRedirect\Init::get_instance();
+//	$instance = null;
+//
+//	$plugin = new DropdownRedirect\Init();
+//	$plugin->run();
 
 }
 
-run_dropdown_redirect();
+dropdown_redirect();

@@ -71,15 +71,47 @@ class Shortcode {
 	 */
 	public function register_shortcode_hooks() {
 
-		add_shortcode( 'ddr_select', [ $this, 'dropdown_redirect_select' ] );
-		add_shortcode( 'ddr_option', [ $this, 'dropdown_redirect_select_option' ] );
+		add_shortcode( 'ddr_select', [ $this, 'ddr_select' ] );
+		add_shortcode( 'ddr_option', [ $this, 'ddr_option' ] );
+		add_shortcode( 'cl_post_title', [ $this, 'caldera_learn_basic_blocks_post_title_shortcode_handler' ] );
 
 	}
 
 	/**
+	 *
+	 */
+	public function caldera_learn_basic_blocks_post_title_shortcode_handler( $atts ) {
+		$atts = shortcode_atts( [
+			'id'      => 0,
+			'heading' => 'h3',
+		], $atts, 'cl_post_title' );
+
+		return $this->caldera_learn_basic_blocks_post_title( $atts['id'], $atts['heading'] );
+	}
+
+	/**
+	 * Output the post title wrapped in a heading
+	 *
+	 * @param int $post_id The post ID
+	 * @param string $heading Allows : h2,h3,h4 only
+	 *
+	 * @return string
+	 */
+	public function caldera_learn_basic_blocks_post_title( $post_id, $heading ) {
+
+		if ( ! in_array( $heading, [ 'h2', 'h3', 'h4' ] ) ) {
+			$heading = 'h2';
+		}
+		$title = get_the_title( absint( $post_id ) );
+
+		return "<$heading>$title</$heading>";
+	}
+
+
+	/**
 	 * Dropdown Redirect Select Field
 	 */
-	public function dropdown_redirect_select( $atts = [], $content = null, $tag = '' ) {
+	public function ddr_select( $atts = [], $content = null, $tag = '' ) {
 
 		// normalize attribute keys, lowercase
 		$atts = array_change_key_case( (array) $atts, CASE_LOWER );
@@ -89,11 +121,36 @@ class Shortcode {
 			'placeholder' => esc_html__( 'Please Select', 'dropdown-redirect' ),
 			'heading'     => esc_html__( 'I need Something for', 'dropdown-redirect' ),
 			'class'       => '',
-			'target'      => '_blank'
+			'target'      => '_blank',
+			'id'          => 'ddr-instance-' . absint( $this->counter )
 		), $atts );
 
+		// Do Some Sanitization of $atts
 		$atts['class']  = $this->sanitize_shortcode_attr_class( $atts['class'] );
 		$atts['target'] = sanitize_key( $atts['target'] );
+		$atts['id']     = sanitize_html_class( $atts['id'] );
+
+		return $this->get_ddr_select_html_output( $atts, $content );
+
+	}
+
+	/**
+	 *
+	 */
+	public function sanitize_shortcode_attr_class( $classes ) {
+
+		$classes = array_map( function ( $class ) {
+			return sanitize_html_class( $class );
+		}, explode( ' ', $classes ) );
+
+		return implode( ' ', $classes );
+
+	}
+
+	/**
+	 *
+	 */
+	public function get_ddr_select_html_output( $atts, $content ) {
 
 		// start output
 		$output = '';
@@ -124,16 +181,15 @@ class Shortcode {
 
 		// Update output
 		$output .= sprintf(
-			'<div id="ddr-instance-%s" class="dropdown-redirect-container %s"><span class="ddr-heading">%s</span><span class="ddr-select-cont"><select name="" id="" class="ddr-select">',
-			$this->counter,
+			'<div id="%s" class="dropdown-redirect-container %s"><span class="ddr-heading">%s</span><span class="ddr-select-cont"><select class="ddr-select">',
+			$atts['id'],
 			$atts['class'],
 			esc_html( $atts['heading'] )
 		);
 		$output .= do_shortcode( '[ddr_option title="' . $atts['placeholder'] . '" url=""]' );
 		$output .= do_shortcode( $content );
 		$output .= '  </select></span></div>';
-
-		$output .= "<script>(function($){ $('#ddr-instance-" . $this->counter . " .ddr-select-cont select.ddr-select').change(function(){ var getValue = $(this).val(); if(getValue !== ''){ window.open(getValue, '" . $atts['target'] . "');}});}(jQuery));</script>";
+		$output .= "<script>(function($){ $('#" . $atts['id'] . " .ddr-select-cont select.ddr-select').change(function(){ var getValue = $(this).val(); if(getValue !== ''){ window.open(getValue, '" . $atts['target'] . "');}});}(jQuery));</script>";
 
 		// Increase the counter for next shortcode instance
 		$this->counter ++;
@@ -144,23 +200,10 @@ class Shortcode {
 	}
 
 	/**
-	 *
-	 */
-	public function sanitize_shortcode_attr_class( $classes ) {
-
-		$classes = array_map( function ( $class ) {
-			return sanitize_html_class( $class );
-		}, explode( ' ', $classes ) );
-
-		return implode( ' ', $classes );
-
-	}
-
-	/**
 	 * Dropdown Redirect Select Option Shortcode
 	 * This shortcode is used to create Options in the select field
 	 */
-	public function dropdown_redirect_select_option( $atts = [], $content = null, $tag = '' ) {
+	public function ddr_option( $atts = [], $content = null, $tag = '' ) {
 
 
 		// normalize attribute keys, lowercase

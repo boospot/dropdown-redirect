@@ -30,6 +30,9 @@ namespace DropdownRedirect;
  */
 class Init {
 
+	protected static $instance;
+	public $shortcode;
+	public $blocks;
 	/**
 	 * The loader that's responsible for maintaining and registering all hooks that power
 	 * the plugin.
@@ -39,7 +42,6 @@ class Init {
 	 * @var      Loader $loader Maintains and registers all hooks for the plugin.
 	 */
 	protected $loader;
-
 	/**
 	 * The unique identifier of this plugin.
 	 *
@@ -48,7 +50,6 @@ class Init {
 	 * @var      string $plugin_name The string used to uniquely identify this plugin.
 	 */
 	protected $plugin_name;
-
 	/**
 	 * The current version of the plugin.
 	 *
@@ -87,6 +88,7 @@ class Init {
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
 		$this->define_shortcode_hooks();
+		$this->define_blocks_hooks();
 		$this->define_taxonomy_hooks();
 
 		do_action( 'ddr_init_construct' );
@@ -205,7 +207,19 @@ class Init {
 	 */
 	private function define_shortcode_hooks() {
 
-		$plugin_shortcode = new Shortcode( $this->get_plugin_name(), $this->get_version() );
+		$this->shortcode = new Shortcode( $this->get_plugin_name(), $this->get_version() );
+
+	}
+
+	/**
+	 * Register all of the hooks related to Gutenberg
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 */
+	private function define_blocks_hooks() {
+
+		$this->blocks = new Blocks( $this->get_plugin_name(), $this->get_version() );
 
 	}
 
@@ -219,6 +233,22 @@ class Init {
 
 //		$plugin_taxonomies = new Taxonomy();
 
+
+	}
+
+	/**
+	 *
+	 */
+	public static function get_instance() {
+
+		if ( ! self::$instance ) {
+
+			$instance = new self;
+			$instance->run();
+			self::$instance = $instance;
+		}
+
+		return self::$instance;
 
 	}
 
